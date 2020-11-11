@@ -91,14 +91,16 @@ function maskMoeda(id) {
 }
 
 function maskUF(id) {
-	const regexes = {
-		A: 'CLMP', B: 'A', C: 'E', D: 'F', E: 'S', G: 'O', M: 'AGST', P: 'ABEIR', R: 'JNORS', S: 'CEP', T: 'O'
-	} // Combinações possíveis de sigla (a chave representa o primeiro caracter e o valor representa as possibilidades do segundo)
+	// Combinações possíveis de sigla (a chave representa o primeiro caracter e o valor representa as possibilidades do segundo)
+	// Exemplo {S: 'CEP'} significa que as combinações 'SC', 'SE' e 'SP' são siglas válidas
+	const regexes = { A: 'CLMP', B: 'A', C: 'E', D: 'F', E: 'S', G: 'O', M: 'AGST', P: 'ABEIR', R: 'JNORS', S: 'CEP', T: 'O' }
+	let primeiro = ''
+	for (let key in regexes) primeiro += key
 	const element = document.getElementById(id)
 	element.setAttribute('maxLength', '2')
 	element.value = element.value
-						.replace(/[^A-Za-z]/g, '')								// Permite apenas letras
-						.replace(element.value, element.value.toUpperCase())	// Converte em letras maiúsculas
-						.replace(/^[^ABCDEGMPRST]$/g, '')						// Filtra o 1º caracter
-						.replace(new RegExp(`^(${element.value[0]})([^${regexes[element.value[0]]}])$`, 'g'), '$1') // Filtra o 2º
+						.replace(/[^A-Za-z]/g, '')													// Permite apenas letras
+						.replace(element.value, element.value.toUpperCase())						// Converte em letras maiúsculas
+						.replace(new RegExp(`^[^${primeiro}]$`, 'g'), '')							// Filtra o 1º caracter
+						.replace(new RegExp(`^([A-Z])([^${regexes[element.value[0]]}])$`), '$1')	// Filtra o 2º caracter
 }
