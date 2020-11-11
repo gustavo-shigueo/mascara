@@ -17,6 +17,7 @@ Para adicionar as máscaras, basta criar um arquivo HTML, adicionar a tag <scrip
 * moeda: de R$ 0,00 até R$ 0.000.000.000.000,00
 
 ## Uso no HTML:
+```html:
 <!DOCTYPE html>
 <html lang="pt-BR">
     <head>
@@ -31,3 +32,4 @@ Para adicionar as máscaras, basta criar um arquivo HTML, adicionar a tag <scrip
         <input type="text" id="exemplo6" data-mask="moeda">
     </body>
 </html>
+```
