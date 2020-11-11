@@ -5,7 +5,8 @@ Este repositório contém um arquivo HTML e um arquivo CSS para demonstração. 
 
 ## Como usar?
 Para adicionar as máscaras, basta criar um arquivo HTML, adicionar a tag ```html
-<script src="masks.js" defer></script>```, direcionando o atributo src ao arquivo masks.js.
+<script src="masks.js" defer></script>
+```, direcionando o atributo src ao arquivo masks.js.
  Depois, nas tags `<input type="text">`, **é necessário adicionar um id** qualquer (desde que não haja mais elementos com o mesmo id no arquivo HTML) **e um atributo data-mask.**
  O valor de data-mask irá determinar o tipo de máscara aplicada.
 
