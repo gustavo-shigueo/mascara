@@ -26,6 +26,8 @@ function maskInput(target) {
 			break
 		case 'moeda': maskMoeda(id)
 			break
+		case 'uf': maskUF(id)
+			break
 		default: return
 	}
 
@@ -86,4 +88,20 @@ function maskMoeda(id) {
 						.replace('.', ',')
 						.replace(/(\d)(?=(\d{3})+\,)/g, "$1.")
 	if (element.value === 'R$ 0,00') element.value = ''
+}
+
+function maskUF(id) {
+	const regexes = {
+		A: /^(A)([^CLMP])$/g, B: /^(B)([^A])$/g    , C: /^(C)([^E])$/g,
+		D: /^(D)([^F])$/g   , E: /^(E)([^S])$/g    , G: /^(G)([^O])$/g,
+		M: /^(M)([^AGST])$/g, P: /^(P)([^ABEIR])$/g, R: /^(R)([^JNORS])$/g,
+		S: /^(S)([^CEP])$/g , T: /^(T)([^O])$/g
+	}
+	const element = document.getElementById(id)
+	element.setAttribute('maxLength', '2')
+	element.value = element.value
+						.replace(/[^A-Za-z]/g, '')
+						.replace(element.value, element.value.toUpperCase())
+						.replace(/^[^ABCDEGMPRST]$/g, '')
+						.replace(regexes[element.value[0]], '$1')
 }

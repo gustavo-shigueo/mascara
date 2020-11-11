@@ -15,6 +15,7 @@ Para adicionar as máscaras, basta criar um arquivo HTML, adicionar a tag `<scri
 * cep: 00000-000
 * data: 00/00/0000
 * moeda: de R$ 0,00 até R$ 0.000.000.000.000,00
+* uf: AA (permite apenas a digitação de siglas de estados brasileiros, ex: SP, RJ, DF)
 
 ## Uso no HTML:
 ```html
@@ -30,6 +31,7 @@ Para adicionar as máscaras, basta criar um arquivo HTML, adicionar a tag `<scri
         <input type="text" id="exemplo4" data-mask="cep">
         <input type="text" id="exemplo5" data-mask="data">
         <input type="text" id="exemplo6" data-mask="moeda">
+        <input type="text" id="exemplo7" data-mask="uf">
     </body>
 </html>
 ```
