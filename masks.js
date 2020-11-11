@@ -92,16 +92,13 @@ function maskMoeda(id) {
 
 function maskUF(id) {
 	const regexes = {
-		A: /^(A)([^CLMP])$/g, B: /^(B)([^A])$/g    , C: /^(C)([^E])$/g,
-		D: /^(D)([^F])$/g   , E: /^(E)([^S])$/g    , G: /^(G)([^O])$/g,
-		M: /^(M)([^AGST])$/g, P: /^(P)([^ABEIR])$/g, R: /^(R)([^JNORS])$/g,
-		S: /^(S)([^CEP])$/g , T: /^(T)([^O])$/g
-	}
+		A: 'CLMP', B: 'A', C: 'E', D: 'F', E: 'S', G: 'O', M: 'AGST', P: 'ABEIR', R: 'JNORS', S: 'CEP', T: 'O'
+	} // Combinações possíveis de sigla (a chave representa o primeiro caracter e o valor representa as possibilidades do segundo)
 	const element = document.getElementById(id)
 	element.setAttribute('maxLength', '2')
 	element.value = element.value
-						.replace(/[^A-Za-z]/g, '')
-						.replace(element.value, element.value.toUpperCase())
-						.replace(/^[^ABCDEGMPRST]$/g, '')
-						.replace(regexes[element.value[0]], '$1')
+						.replace(/[^A-Za-z]/g, '')								// Permite apenas letras
+						.replace(element.value, element.value.toUpperCase())	// Converte em letras maiúsculas
+						.replace(/^[^ABCDEGMPRST]$/g, '')						// Filtra o 1º caracter
+						.replace(new RegExp(`^(${element.value[0]})([^${regexes[element.value[0]]}])$`, 'g'), '$1') // Filtra o 2º
 }
