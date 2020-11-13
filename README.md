@@ -1,7 +1,7 @@
 # Mascáras para inputs de formulários HTML
 Esse script permite a utilização de máscaras em inputs HTML **sem a necessidade de usar jQuery.**
 Se tiver sugestões de mais tipos de máscaras, crie um _issue_ neste repositório.
-Este repositório contém um arquivo HTML e um arquivo CSS para demonstração. Esses arquivos não são necessários, apenas o arquivo masks.js é importante.
+Este repositório contém um arquivo HTML e um arquivo CSS para a página de demonstração, que pode ser acessada [aqui](https://gustavo-shigueo.github.io/mascara/). Esses arquivos não são necessários, apenas o arquivo masks.js é.
 
 ## Como usar?
 Para adicionar as máscaras, basta criar um arquivo HTML, adicionar a tag `<script src="masks.js" defer></script>` , direcionando o atributo src ao arquivo masks.js.
