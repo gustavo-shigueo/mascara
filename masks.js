@@ -1,11 +1,8 @@
 // Armazena todos os elementos do DOM que tiverem o atributo data-mask definido
-const fields = [...document.querySelectorAll('[data-mask]')]
+const fields = document.querySelectorAll('[data-mask]')
 
 // Adiciona Event Listeners a todos os items do array fields
-for (let field of fields) {
-	field.addEventListener('onKeyPress', maskInput)
-	field.addEventListener('input'     , maskInput)
-}
+for (let field of fields) field.addEventListener('input', maskInput)
 
 function maskInput(event) {
 	if (event.target.tagName !== 'INPUT') return // Rejeita o elemento caso não seja um input
@@ -30,7 +27,6 @@ function maskInput(event) {
 			break
 		default: return
 	}
-
 }
 
 function maskFone(id) {
