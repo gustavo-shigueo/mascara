@@ -11,7 +11,7 @@ function maskInput(event) {
 	if (event.target.tagName !== 'INPUT') return // Rejeita o elemento caso não seja um input
 	const dataType = event.target.getAttribute('data-mask') // Obtém o valor de data-mask
 	const id       = event.target.getAttribute('id')        // Obtém o ID do elemento
-	
+
 	// Aciona a função adequada de acordo com o dataType, passando o ID como parâmetro
 	switch(dataType){
 		case 'fone': maskFone(id)
