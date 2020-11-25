@@ -43,9 +43,8 @@ function maskCPF(id) {
 	element.setAttribute('maxLength', '14')
 	element.value = element.value
 						.replace(/\D/g, '')
-						.replace(/^(\d{3})(\d)/g, "$1.$2")
-						.replace(/^(.{7})(\d)/g, "$1.$2")
-						.replace(/^(.{11})(\d|\d{2})$/, "$1-$2")
+						.replace(/(\d{3})(?=\d)(?<!.{9,})/g, "$1.")
+						.replace(/^(.{11})(\d+)$/, "$1-$2")
 }
 
 function maskRG(id) {
@@ -53,10 +52,10 @@ function maskRG(id) {
 	element.setAttribute('maxLength', '12')
 	element.value = element.value
 						.replace(/\D/g, '')
-						.replace(/^(\d{2})(\d)/g, "$1.$2")
-						.replace(/^(.{6})(\d)/g, "$1.$2")
+						.replace(/(^\d{2}|\d{3})(?=\d)(?<!\d{8,})/g, "$1.")
 						.replace(/^(.{10})(\d)$/, "$1-$2")
 }
+
 function maskCEP(id) {
 	const element = document.getElementById(id)
 	element.setAttribute('maxLength', '9')
@@ -70,8 +69,7 @@ function maskData(id) {
 	element.setAttribute('maxLength', '10')
 	element.value = element.value
 						.replace(/\D/g, '')
-						.replace(/^(\d{2})(\d)/g, "$1/$2")
-						.replace(/^(.{5})(\d)/g, "$1/$2")
+						.replace(/(\d{2})(?=\d)(?<!.{6,})/g, "$1/")
 }
 
 function maskMoeda(id) {
