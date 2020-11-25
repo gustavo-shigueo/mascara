@@ -5,7 +5,7 @@ const fields = document.querySelectorAll('[data-mask]')
 for (let field of fields) field.addEventListener('input', maskInput)
 
 function maskInput(event) {
-	if (event.target.tagName !== 'INPUT') return // Rejeita o elemento caso não seja um input
+	if (event.target.tagName !== 'INPUT') return            // Rejeita o elemento caso não seja um input
 	const dataType = event.target.getAttribute('data-mask') // Obtém o valor de data-mask
 	const id       = event.target.getAttribute('id')        // Obtém o ID do elemento
 
@@ -32,7 +32,7 @@ function maskInput(event) {
 function maskFone(id) {
 	const element = document.getElementById(id) // Seleciona o input correto com base no ID
 	element.setAttribute('maxLength', '15')     // Limita o número de caracteres do input
-	element.value = element.value		    	// Aplica a máscara fazendo uso de expressões regulares
+	element.value = element.value               // Aplica a máscara fazendo uso de expressões regulares
 						.replace(/\D/g, '')
 						.replace(/^(\d{2})(\d)/g, "($1) $2")
 						.replace(/(\d)(\d{4})$/, "$1-$2")
@@ -44,8 +44,8 @@ function maskCPF(id) {
 	element.value = element.value
 						.replace(/\D/g, '')
 						.replace(/^(\d{3})(\d)/g, "$1.$2")
-						.replace(/(\d{3}\.\d{3})(\d)/g, "$1.$2")
-						.replace(/(\d{3}\.\d{3}\.\d{3})(\d|\d{2})$/, "$1-$2")
+						.replace(/^(.{7})(\d)/g, "$1.$2")
+						.replace(/^(.{11})(\d|\d{2})$/, "$1-$2")
 }
 
 function maskRG(id) {
@@ -54,8 +54,8 @@ function maskRG(id) {
 	element.value = element.value
 						.replace(/\D/g, '')
 						.replace(/^(\d{2})(\d)/g, "$1.$2")
-						.replace(/(\d{2}\.\d{3})(\d)/g, "$1.$2")
-						.replace(/(\d{2}\.\d{3}\.\d{3})(\d)$/, "$1-$2")
+						.replace(/^(.{6})(\d)/g, "$1.$2")
+						.replace(/^(.{10})(\d)$/, "$1-$2")
 }
 function maskCEP(id) {
 	const element = document.getElementById(id)
@@ -71,7 +71,7 @@ function maskData(id) {
 	element.value = element.value
 						.replace(/\D/g, '')
 						.replace(/^(\d{2})(\d)/g, "$1/$2")
-						.replace(/^(\d{2}\/\d{2})(\d)/g, "$1/$2")
+						.replace(/^(.{5})(\d)/g, "$1/$2")
 }
 
 function maskMoeda(id) {
@@ -95,8 +95,8 @@ function maskUF(id) {
 	const element = document.getElementById(id)
 	element.setAttribute('maxLength', '2')
 	element.value = element.value
-						.replace(/[^A-Za-z]/g, '')													// Permite apenas letras
-						.replace(element.value, element.value.toUpperCase())						// Converte em letras maiúsculas
-						.replace(new RegExp(`^[^${primeiro}]$`, 'g'), '')							// Filtra o 1º caracter
-						.replace(new RegExp(`^([A-Z])([^${regexes[element.value[0]]}])$`), '$1')	// Filtra o 2º caracter
+						.replace(/[^A-Za-z]/g, '')                                                // Permite apenas letras
+						.toUpperCase()                                                            // Converte em letras maiúsculas
+						.replace(new RegExp(`^[^${primeiro}]$`, 'g'), '')                         // Filtra o 1º caracter
+						.replace(new RegExp(`^([A-Z])([^${regexes[element.value[0]]}])$`), '$1')  // Filtra o 2º caracter
 }
