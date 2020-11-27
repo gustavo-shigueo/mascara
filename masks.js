@@ -25,7 +25,7 @@ function maskInput(event) {
 			break
 		case 'uf': maskUF(id)
 			break
-		default: return
+		default: maskGeneral(id)
 	}
 }
 
@@ -97,4 +97,41 @@ function maskUF(id) {
 						.toUpperCase()                                                            // Converte em letras maiúsculas
 						.replace(new RegExp(`^[^${primeiro}]$`, 'g'), '')                         // Filtra o 1º caracter
 						.replace(new RegExp(`^([A-Z])([^${regexes[element.value[0]]}])$`), '$1')  // Filtra o 2º caracter
+}
+
+function maskGeneral(id) {
+	const element = document.getElementById(id)
+	const mask = element.getAttribute('data-mask').trim()
+
+	element.setAttribute('maxLength', `${mask.length}`)
+
+	let maskSymbols = []
+	let l = 0
+	for (const char of mask) {
+		if (char !== '0') {
+			if (l > 0) maskSymbols.push(l)
+			maskSymbols.push(char)
+			l = 0
+		} 
+		else l++
+	}
+
+	apply()
+
+	function apply() {
+		element.value = element.value.replace(/\D/g, '')
+		let replaces = []
+
+		for (let i = typeof(maskSymbols[0]) === 'string' ? 0 : 1; i < maskSymbols.length; i += 2) {
+			let regex = replaces.length !== 0 ? `${replaces[replaces.length - 1][0].replace('})', '}')}\\${maskSymbols[i - 2]}` : ``
+			if (i === 0) replaces.push(['^(\\d)', `${maskSymbols[i]}$1`])
+			else if (i % 2 === 0)	regex = i === 2 ? `^(\\${maskSymbols[0]}\\d{${maskSymbols[1]}})` : `${regex}\\d{${maskSymbols[i - 1]}})`
+			else regex += `${i === 1 ? '(' : ''}\\d{${maskSymbols[i - 1]}})`
+
+			if (i !== 0) replaces.push([regex, `$1${maskSymbols[i]}`])
+
+			if (typeof(maskSymbols[i]) === 'string' && typeof(maskSymbols[i + 1]) === 'string') console.error(`Não é possível usar dois caracteres não numéricos juntos nas máscaras pesonalizadas.\nVerifique o atributo data-mask do elemento #${id} e tente novamente`)
+		}
+		for (const replace of replaces) element.value = element.value.replace(new RegExp(`${replace[0]}(\\d)`), `${replace[1]}$2`)
+	}
 }
