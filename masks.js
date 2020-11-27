@@ -109,7 +109,7 @@ function maskGeneral(id) {
 	let l = 0
 	for (const char of mask) {
 		if (char !== '0') {
-			if (l > 0) maskSymbols.push(l)
+			maskSymbols.push(l)
 			maskSymbols.push(char)
 			l = 0
 		} 
@@ -130,7 +130,6 @@ function maskGeneral(id) {
 
 			if (i !== 0) replaces.push([regex, `$1${maskSymbols[i]}`])
 
-			if (typeof(maskSymbols[i]) === 'string' && typeof(maskSymbols[i + 1]) === 'string') console.error(`Não é possível usar dois caracteres não numéricos juntos nas máscaras pesonalizadas.\nVerifique o atributo data-mask do elemento #${id} e tente novamente`)
 		}
 		for (const replace of replaces) element.value = element.value.replace(new RegExp(`${replace[0]}(\\d)`), `${replace[1]}$2`)
 	}
