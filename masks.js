@@ -109,8 +109,7 @@ function maskGeneral(id) {
 	let l = 0
 	for (const char of mask) {
 		if (char !== '0') {
-			maskSymbols.push(l)
-			maskSymbols.push(char)
+			maskSymbols.push(l, char)
 			l = 0
 		} 
 		else l++
