@@ -19,8 +19,7 @@ Para adicionar as máscaras, basta criar um arquivo HTML, adicionar a tag `<scri
 
 ## Máscaras personalizadas:
 Agora é possível criar suas próprias máscaras! Basta digitar o padrão desejado dentro do atributo **data-mask**.
-A criação de padrões usa zeros como caracteres numéricos e símbolos digitados pelo usuário como máscara, no entanto há uma limitação: Não é possível usar dois caracteres não numéricos juntos.
-Exemplo: a máscara do tipo fone não pode ser recriada com essa função, pois usao formato '(00) 00000-0000', que contém um parênteses ')' e um espaço em branco ' ' adjascentes.
+A criação de padrões usa zeros como caracteres numéricos e símbolos digitados pelo usuário como máscara.
 
 ## Uso no HTML:
 ```html
