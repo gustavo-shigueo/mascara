@@ -129,7 +129,6 @@ function maskGeneral(id) {
 			else regex += `${i === 1 ? '(' : ''}\\d{${maskSymbols[i - 1]}})`
 
 			if (i !== 0) replaces.push([regex, `$1${maskSymbols[i]}`])
-
 		}
 		for (const replace of replaces) element.value = element.value.replace(new RegExp(`${replace[0]}(\\d)`), `${replace[1]}$2`)
 	}
