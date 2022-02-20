@@ -1,54 +1,77 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Demonstração</title>
-    <script src="./masks.js" defer></script>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <h1>Mascáras para formulários HTML</h1>
-    <div class="wrapper">
-        <label>Fone:</label> 
-        <input type="text" id="exemplo1" data-mask="fone">
-    </div><br>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Demonstração</title>
+		<script src="./masks.js" defer></script>
+		<link rel="stylesheet" href="style.css" />
+	</head>
+	<body>
+		<form action="#">
+			<h1>Mascáras para formulários HTML</h1>
+			<div class="wrapper">
+				<label>Fone:</label>
+				<input type="text" data-mask="fone" />
+			</div>
+			<br />
 
-    <div class="wrapper">
-        <label>CPF:</label> 
-        <input type="text" id="exemplo2" data-mask="cpf">
-    </div><br>
+			<div class="wrapper">
+				<label>CPF:</label>
+				<input type="text" data-mask="cpf" />
+				<p aria-i></p>
+			</div>
+			<br />
 
-    <div class="wrapper">
-        <label>RG:</label> 
-        <input type="text" id="exemplo3" data-mask="rg">
-    </div><br>
+			<div class="wrapper">
+				<label>CNPJ:</label>
+				<input type="text" data-mask="cnpj" />
+			</div>
+			<br />
 
-    <div class="wrapper">
-        <label>CEP:</label> 
-        <input type="text" id="exemplo4" data-mask="cep">
-    </div><br>
+			<div class="wrapper">
+				<label>RG:</label>
+				<input type="text" data-mask="rg" />
+			</div>
+			<br />
 
-    <div class="wrapper">
-        <label>Data:</label> 
-        <input type="text" id="exemplo5" data-mask="data">
-    </div><br>
+			<div class="wrapper">
+				<label>CEP:</label>
+				<input type="text" data-mask="cep" />
+			</div>
+			<br />
 
-    <div class="wrapper">
-        <label>Dinheiro:</label> 
-        <input type="text" id="exemplo6" data-mask="moeda">
-    </div><br>
-    
-    <div class="wrapper">
-        <label>Estado:</label> 
-        <input type="text" id="exemplo7" data-mask="uf">
-    </div><br>
+			<div class="wrapper">
+				<label>Data:</label>
+				<input type="text" data-mask="data" />
+			</div>
+			<br />
 
-    <div class="wrapper">
-        <label>Geral:</label> 
-        <input type="text" id="exemplo8" data-mask="(00 000;00-0@/0=000">
-    </div><br>
+			<div class="wrapper">
+				<label>Dinheiro:</label>
+				<input type="text" data-mask="moeda" />
+			</div>
+			<br />
 
-    <p><a href="https://gustavo-shigueo.github.io/mascara/masks.js">Baixe o código fonte (JS) clicando aqui</a></p>
-</body>
+			<div class="wrapper">
+				<label>Estado:</label>
+				<input type="text" data-mask="uf" />
+			</div>
+			<br />
+
+			<div class="wrapper">
+				<label>Geral:</label>
+				<input type="text" data-mask="(00 000;00-0@/0=000" />
+			</div>
+			<br />
+
+			<button type="submit">Testar validador de CPF e CNPJ</button>
+		</form>
+
+		<p>
+			<a href="https://gustavo-shigueo.github.io/mascara/masks.js"
+				>Baixe o código fonte (JS) clicando aqui</a
+			>
+		</p>
+	</body>
 </html>
